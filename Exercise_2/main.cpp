@@ -8,6 +8,10 @@ int main()
 {
     char c;
     ifstream file("data.csv");
+    if(file.fail()){
+        cerr<<"file not found"<<endl;
+        return 404;
+    }
     string line;
     getline(file, line);
     istringstream convertStr(line);
@@ -33,8 +37,8 @@ int main()
     ofs<<fixed;
     cout.precision(2);
     ofs.precision(2);
-    ofs<<"S = "<<S<<", n ="<<n<<endl;
-    cout<<"S = "<<S<<", n ="<<n<<endl;
+    ofs<<"S = "<<S<<", n = "<<n<<endl;
+    cout<<"S = "<<S<<", n = "<<n<<endl;
 
     //ripristino le condizioni a quelle iniziali
 
@@ -82,6 +86,8 @@ int main()
     ofs<<"V: "<<risultato;
     delete (pv1);
     delete(pv2);
+    file.close();
+    ofs.close();
 
 
 
